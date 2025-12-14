@@ -1,0 +1,91 @@
+#wh PostgreSQL Dev Container (Data Warehouse Staging)
+# ----------------------------------------------------------------------------
+# HOW TO START
+# - Foreground (attached logs):
+#     docker compose -f infrastructure/docker/docker-compose.yml up
+#   *Blocks your terminal; live logs stream. Stop with CTRL+C.*
+# - Detached (background):
+#     docker compose -f infrastructure/docker/docker-compose.yml up -d
+#   *Returns immediately; view logs later with the logs command below.*
+#
+# HOW TO STOP
+# - Keep data volume:  docker compose -f infrastructure/docker/docker-compose.yml down
+# - Destroy data too:  docker compose -f infrastructure/docker/docker-compose.yml down -v
+#   (Removes the named volume 'pgdata' so the DB re-initializes next start.)
+#
+# CONNECT
+# - psql interactive shell:
+#     docker compose -f infrastructure/docker/docker-compose.yml exec postgres psql -U etl -d dw
+# - DBeaver / any client:
+#     Host=localhost Port=5432 DB=dw User=etl Password=etl SSL=disable
+#
+# LOGS & HEALTH
+# - Follow logs (detached mode): docker compose -f infrastructure/docker/docker-compose.yml logs -f postgres
+# - Show container + health:     docker compose -f infrastructure/docker/docker-compose.yml ps
+#   Health becomes 'healthy' after pg_isready succeeds per healthcheck.
+#
+# INIT SQL (FIRST RUN ONLY)
+# - All *.sql files in ../sql/ddl (mounted to /docker-entrypoint-initdb.d) run only
+#   when the data directory is empty (i.e., first time volume is created). After
+#   that, change detection does NOT re-run them. To reapply from scratch, run:
+#       docker compose -f infrastructure/docker/docker-compose.yml down -v
+#       docker compose -f infrastructure/docker/docker-compose.yml up -d
+#
+# SEED CSV ACCESS
+# - Local host seeds dir ../../data/seeds mounted read-only at /seeds inside container.
+# - Example manual load (plans):
+#     docker compose -f infrastructure/docker/docker-compose.yml exec -T postgres \
+#       psql -U etl -d dw -c "COPY staging.plans_raw(plan_id,name,metal_tier,monthly_premium,deductible,oop_max,coinsurance_rate,pcp_copay,effective_year) FROM '/seeds/plans_YYYYMMDDHHMM.csv' CSV HEADER";
+#   Add metadata row (link load_id) afterwards (replace timestamp):
+#     docker compose -f infrastructure/docker/docker-compose.yml exec -T postgres psql -U etl -d dw -c "WITH ins AS (INSERT INTO staging.load_batches(source_name,description,file_pattern,status) VALUES ('seed_generation','plans load','plans_YYYYMMDDHHMM.csv','completed') RETURNING load_id) UPDATE staging.plans_raw SET load_id=(SELECT load_id FROM ins) WHERE load_id IS NULL;"
+#
+# FOREGROUND VS DETACHED (QUICK RECAP)
+# - Foreground: good for first-time debug; you see immediate errors; CTRL+C stops.
+# - Detached: good for daily workflow; pair with 'logs -f' when you need output.
+#
+# NAMED VOLUME (pgdata)
+# - Persists cluster files under Docker’s volume management. Safe to stop/start.
+# - Deleting the volume resets DB state (fresh init scripts re-run).
+#
+# HEALTHCHECK
+# - Ensures dependent services (if added later) can wait for 'healthy' status.
+# - Retries every 10s up to 5 times; adjust if large init scripts slow startup.
+#
+# ============================================================================
+services:
+  postgres:  # Single PostgreSQL service for staging/warehouse
+    image: postgres:16  # official Postgres 16 image
+    container_name: aca_health_postgres  # Fixed container name for easy docker exec
+    env_file:
+      - ../../.env  # Externalize credentials
+    environment:
+      - POSTGRES_DB=aca_health
+    ports:
+      - "5432:5432"  # Host port 5432 -> container 5432 for local tools (psql, DBeaver)
+    volumes:
+      - pgdata:/var/lib/postgresql/data              # Named volume persists database cluster
+      - ./data/seeds:/seeds:ro,Z                     # Seeds (read-only, SELinux relabel)
+      # postgres entry point runs every sql script in sorted order
+      # docker-entrypoint-initdb.d is a directory containing initialization scripts
+      # :ro,Z is SELinux relabeling for read-only volumes
+      - ./infrastructure/sql/ddl:/docker-entrypoint-initdb.d:ro,Z
+    healthcheck:  # Lets compose know when Postgres is ready to accept connections
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped  # Auto-restart unless explicitly stopped
+
+volumes:
+  pgdata:  # Named volume metadata (actual data managed by Podman)
+
+# ---------------------------------------------------------------------------
+# DBeaver Connection Quick Reference
+#   Host: localhost
+#   Port: 5432
+#   Database: aca_health
+#   Username: etl
+#   Password: etl
+# Optional JDBC URL:
+#   jdbc:postgresql://localhost:5432/aca_health?user=etl&password=etl
+# ---------------------------------------------------------------------------

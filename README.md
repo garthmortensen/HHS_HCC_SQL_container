@@ -13,9 +13,61 @@ This package assumes a basic understanding of T-SQL; we do not provide technical
 1.	This model does not currently account for billable vs. non-billable member months in calculating PLRS by plan HIOS ID.
 2.	This model only applies basic selection logic concerning eligibility and service code inclusion criteria when determining claims eligibility. It does not apply other edits that may lead to claim exclusion in the EDGE server, such as duplication logic. Refer to the EDGE Server business rules published on https://regtap.cms.gov for more robust exclusion logic and to troubleshoot differences between this model and EDGE server results.
 
+### PODMAN (SQL SERVER CONTAINER) QUICKSTART
+
+This repo includes a Podman-friendly SQL Server 2022 setup at `docker/mssql/docker-compose.yml`. It creates a database (default: `RiskAdjustment`, configurable via `MSSQL_DB`) and runs the table/reference scripts automatically on first start via `docker/mssql/init/bootstrap.sql`.
+
+0. Clone this repo
+
+```bash
+git clone https://github.com/garthmortensen/HHS_HCC_SQL_container.git
+cd HHS_HCC_SQL_container
+```
+
+1. Create your local `.env`
+
+Edit `.env` in the repo root and set a strong password:
+- `MSSQL_SA_PASSWORD` (required; must meet SQL Server complexity rules)
+
+2. Start SQL Server + one-time init
+
+```bash
+podman compose -f docker/mssql/docker-compose.yml up -d
+podman logs -f hhs_hcc_mssql_init
+```
+
+The init container is health-gated (it waits for SQL Server to be healthy). When `hhs_hcc_mssql_init` prints `Init complete`, the DB is ready.
+
+3. Connect
+
+- Host: localhost
+- Port: 1433
+- User: sa
+- Password: `<MSSQL_SA_PASSWORD from .env>`
+- Database: `<MSSQL_DB from .env>`
+
+4. What “first run only” means
+
+The init container checks whether the target database (`MSSQL_DB`, default `RiskAdjustment`) already exists. If it exists, it skips running scripts.
+
+To re-run initialization from scratch (DESTROYS DB DATA):
+
+```bash
+podman compose -f docker/mssql/docker-compose.yml down -v
+podman compose -f docker/mssql/docker-compose.yml up -d
+```
+
+5. Restart after changing `.env`
+
+If you change values in `.env`, recreate containers to ensure the new values are applied:
+
+```bash
+podman compose -f docker/mssql/docker-compose.yml up -d --force-recreate
+```
+
 ### INSTRUCTIONS
 
-This package contains multiple SQL scripts. The scripts in the Table Load Scripts folder need only be run once (or when running an updated version of this model). The only input that needs to be changed for these scripts is the “USE” statement; change this to the database you will be using for this model. This model is built assuming the “dbo” schema is used and will not function properly if your privileges default you to another schema. 
+This package contains multiple SQL scripts. The scripts in the Table Load Scripts folder need only be run once (or when running an updated version of this model). Run them in the database you will be using for this model (for example, connect to the target DB in SSMS/Azure Data Studio, or run `sqlcmd` with `-d <your_db>`). This model is built assuming the “dbo” schema is used and will not function properly if your privileges default you to another schema. 
 
 Once the table load scripts have been run, you will need to populate 4 of the tables that are created as a result with your own enrollment, claims, and supplemental diagnosis data.
 

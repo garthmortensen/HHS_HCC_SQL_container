@@ -1,4 +1,5 @@
-USE [RiskAdjustment] --- set this to the database you will use ----
+-- Note: This script assumes you are already in the target database.
+-- For example, run it with `sqlcmd -d <your_db>` or issue `USE [<your_db>]` before executing.
 
 
 
