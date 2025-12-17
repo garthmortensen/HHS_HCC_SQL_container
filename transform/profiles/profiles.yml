@@ -1,0 +1,14 @@
+hhs_hcc:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: "ODBC Driver 18 for SQL Server"
+      host: "{{ env_var('MSSQL_HOST', 'localhost') }}"
+      port: "{{ env_var('MSSQL_PORT', '1433') | int }}"
+      user: "{{ env_var('MSSQL_USER', 'sa') }}"
+      password: "{{ env_var('MSSQL_PASSWORD', env_var('MSSQL_SA_PASSWORD', '')) }}"
+      database: "{{ env_var('MSSQL_DB', 'edge') }}"
+      schema: "{{ env_var('DBT_SCHEMA', 'dbt') }}"
+      threads: 4
+      trust_cert: true

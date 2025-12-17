@@ -1,0 +1,2 @@
+# Keep this intentionally small; this repo's dbt project targets SQL Server.
+dbt-sqlserver>=1.8,<2

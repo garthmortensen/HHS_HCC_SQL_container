@@ -1,0 +1,127 @@
+name: Generate and Deploy dbt Docs
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unixodbc unixodbc-dev
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r transform/requirements.txt
+
+      - name: Install dbt dependencies
+        working-directory: ./transform
+        run: |
+          dbt deps
+
+      - name: Generate dbt docs (best-effort)
+        working-directory: ./transform
+        run: |
+          echo "=== Creating dummy profiles.yml for docs generation ==="
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << EOF
+          hhs_hcc:
+            target: dev
+            outputs:
+              dev:
+                type: sqlserver
+                driver: "ODBC Driver 18 for SQL Server"
+                host: localhost
+                port: 1433
+                user: dummy
+                password: dummy
+                database: dummy
+                schema: dummy
+                threads: 1
+                trust_cert: true
+          EOF
+
+          echo "=== Generating dbt manifest and docs ==="
+          dbt parse || echo "Parse completed"
+          dbt docs generate --no-compile || echo "Docs generate completed (DB connection may have failed)"
+
+          mkdir -p target
+
+          if [ -f "target/manifest.json" ]; then
+            echo "✓ manifest.json found"
+
+            if [ -f "target/index.html" ]; then
+              echo "✓ index.html found - running static docs script"
+              python make_static_docs.py
+            else
+              echo "index.html missing - creating minimal shell"
+              cat > target/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>dbt Documentation</title>
+              <meta charset="utf-8">
+          </head>
+          <body>
+              <h1>dbt Documentation</h1>
+              <p>Static docs were generated without a database catalog.</p>
+          </body>
+          </html>
+          EOF
+              python make_static_docs.py || true
+            fi
+          else
+            echo "No manifest.json found - creating error documentation"
+            cat > target/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>dbt Documentation - Error</title>
+              <meta charset="utf-8">
+          </head>
+          <body>
+              <h1>Documentation Generation Failed</h1>
+              <p>See GitHub Actions logs for details.</p>
+          </body>
+          </html>
+          EOF
+            touch target/.nojekyll
+          fi
+
+      - name: Setup GitHub Pages
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './transform/target'
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        id: deployment
+        uses: actions/deploy-pages@v4

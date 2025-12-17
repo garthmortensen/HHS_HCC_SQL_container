@@ -2,13 +2,13 @@
 # ----------------------------------------------------------------------------
 # HOW TO START
 # - Foreground (attached logs):
-#     podman compose -f docker/mssql/docker-compose.yml up
+#     podman compose -f containers/mssql/docker-compose.yml up
 # - Detached (background):
-#     podman compose -f docker/mssql/docker-compose.yml up -d
+#     podman compose -f containers/mssql/docker-compose.yml up -d
 #
 # HOW TO STOP
-# - Keep data volume:  podman compose -f docker/mssql/docker-compose.yml down
-# - Destroy data too:  podman compose -f docker/mssql/docker-compose.yml down -v
+# - Keep data volume:  podman compose -f containers/mssql/docker-compose.yml down
+# - Destroy data too:  podman compose -f containers/mssql/docker-compose.yml down -v
 #
 # INIT SQL (FIRST RUN ONLY)
 # - The mssql-init service waits for SQL Server, then creates DB (MSSQL_DB)
@@ -49,7 +49,7 @@ services:
             exit 1
           fi
 
-          DB_NAME="$${MSSQL_DB:-RiskAdjustment}"
+          DB_NAME="$${MSSQL_DB:-edge}"
           SQL_HOST="mssql"
           SQL_PORT="1433"
 
@@ -80,7 +80,8 @@ services:
           if [[ "$${db_exists}" == "1" ]]; then
             sentinel_exists=$("$${sqlcmd_base[@]}" -d "$${DB_NAME}" -h -1 -W -Q "SET NOCOUNT ON; SELECT CASE WHEN OBJECT_ID(N'dbo.Enrollment', N'U') IS NULL THEN 0 ELSE 1 END" 2>/dev/null || echo 0)
             if [[ "$${sentinel_exists}" == "1" ]]; then
-              echo "Database '$${DB_NAME}' already initialized (dbo.Enrollment exists); skipping init."
+              echo "Database '$${DB_NAME}' already initialized (dbo.Enrollment exists)."
+              echo "Init complete (no-op bootstrap)."
               exit 0
             fi
             echo "Database '$${DB_NAME}' exists but schema is missing; running bootstrap."

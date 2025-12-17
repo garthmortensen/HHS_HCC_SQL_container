@@ -1,0 +1,30 @@
+[0m16:18:03.188905 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80e3200fe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80e423bfe0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80e371c9b0>]}
+
+
+============================== 16:18:03.357691 | d36e06ec-d25a-4c66-b941-4e72c7e47ba9 ==============================
+[0m16:18:03.357691 [info ] [MainThread]: Running with dbt=1.10.15
+[0m16:18:03.360463 [debug] [MainThread]: running dbt with arguments {'warn_error': 'None', 'use_colors': 'True', 'fail_fast': 'False', 'quiet': 'False', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'write_json': 'True', 'invocation_command': 'dbt init edge', 'log_format': 'default', 'log_path': 'logs', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'static_parser': 'True', 'cache_selected_only': 'False', 'no_print': 'None', 'debug': 'False', 'introspect': 'True', 'partial_parse': 'True', 'empty': 'None', 'target_path': 'None', 'printer_width': '80', 'profiles_dir': '/home/garth/.dbt'}
+[0m16:18:03.545418 [debug] [MainThread]: Starter project path: /home/garth/garage/HHS_HCC_SQL_container/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m16:18:03.557617 [info ] [MainThread]: 
+Your new dbt project "edge" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:18:03.559748 [info ] [MainThread]: Setting up your profile.
+[0m16:22:49.253758 [info ] [MainThread]: Profile edge written to /home/garth/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m16:22:49.257694 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 286.31674, "process_in_blocks": "0", "process_kernel_time": 0.543436, "process_mem_max_rss": "120308", "process_out_blocks": "1816", "process_user_time": 6.288529}
+[0m16:22:49.261686 [debug] [MainThread]: Command `dbt init` succeeded at 16:22:49.261041 after 286.32 seconds
+[0m16:22:49.263886 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80e4021f40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80e2c3c5c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f80e2e1f680>]}
+[0m16:22:49.265814 [debug] [MainThread]: Flushing usage events
+[0m16:22:49.534956 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -1,1 +1,10 @@
 .env
+
+# Local-only dbt profiles (may contain secrets)
+transform/profiles/profiles.local.yml
+
+# dbt (root-level transform project)
+transform/target/
+transform/dbt_packages/
+transform/logs/
+

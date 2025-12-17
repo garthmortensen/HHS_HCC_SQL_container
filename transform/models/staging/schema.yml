@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_enrollment
+    description: "Staging view over `dbo.Enrollment` (input)."
+  - name: stg_medical_claims
+    description: "Staging view over `dbo.MedicalClaims` (input)."
+  - name: stg_pharmacy_claims
+    description: "Staging view over `dbo.PharmacyClaims` (input)."
+  - name: stg_supplemental
+    description: "Staging view over `dbo.Supplemental` (input)."
+  - name: stg_hcc_list
+    description: "Staging view over `dbo.hcc_list` (DIY model output)."
+
