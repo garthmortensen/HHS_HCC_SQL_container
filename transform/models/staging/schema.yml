@@ -3,12 +3,71 @@ version: 2
 models:
   - name: stg_enrollment
     description: "Staging view over `dbo.Enrollment` (input)."
+    columns:
+      - name: MemberID
+        description: "Unique member identifier used to join inputs."
+      - name: EffDat
+        description: "Coverage effective date for the span."
+      - name: ExpDat
+        description: "Coverage end date for the span."
+      - name: HIOS_ID
+        description: "Plan HIOS identifier (including CSR variant)."
+      - name: BirthDate
+        description: "Member birth date used for age calculations."
+      - name: Gender
+        description: "Member gender used for coefficient selection."
+
   - name: stg_medical_claims
     description: "Staging view over `dbo.MedicalClaims` (input)."
+    columns:
+      - name: MemberID
+        description: "Member identifier; joins to Enrollment."
+      - name: ClaimNumber
+        description: "Claim identifier; joins to Supplemental."
+      - name: ServiceCode
+        description: "Procedure/service code used for eligibility and RXC mapping."
+      - name: LineServiceDateFrom
+        description: "Service date used for effective-dated joins and eligibility."
+      - name: PaidDate
+        description: "Paid date (not always used for eligibility logic)."
+
   - name: stg_pharmacy_claims
     description: "Staging view over `dbo.PharmacyClaims` (input)."
+    columns:
+      - name: MemberID
+        description: "Member identifier; joins to Enrollment."
+      - name: ClaimNumber
+        description: "Claim identifier."
+      - name: NDC
+        description: "National Drug Code used to map to RXC."
+      - name: FilledDate
+        description: "Fill date used for eligibility and mapping."
+      - name: PaidDate
+        description: "Paid date (not always used for eligibility logic)."
+
   - name: stg_supplemental
     description: "Staging view over `dbo.Supplemental` (input)."
+    columns:
+      - name: ClaimNumber
+        description: "Claim identifier; joins to MedicalClaims."
+      - name: DX
+        description: "Diagnosis code associated to the claim."
+      - name: AddDeleteFlag
+        description: "Indicates add/delete of diagnosis records."
+
   - name: stg_hcc_list
     description: "Staging view over `dbo.hcc_list` (DIY model output)."
+    columns:
+      - name: mbr_id
+        description: "Member identifier (derived from Enrollment.MemberID)."
+      - name: eff_date
+        description: "Coverage effective date for the record."
+      - name: exp_date
+        description: "Coverage end date for the record."
+      - name: risk_score
+        description: "Calculated risk score for the member/span."
+      - name: metal
+        description: "Metal level on the coverage record (e.g., Bronze/Silver/Gold/Platinum/Catastrophic)."
+      - name: hios
+        description: "HIOS identifier for the plan (including CSR variant when present)."
 
