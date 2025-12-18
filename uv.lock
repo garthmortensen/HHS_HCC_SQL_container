@@ -378,12 +378,25 @@ wheels = [
 ]
 
 [[package]]
+name = "faker"
+version = "39.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "tzdata" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/30/b9/0897fb5888ddda099dc0f314a8a9afb5faa7e52eaf6865c00686dfb394db/faker-39.0.0.tar.gz", hash = "sha256:ddae46d3b27e01cea7894651d687b33bcbe19a45ef044042c721ceac6d3da0ff", size = 1941757, upload-time = "2025-12-17T19:19:04.762Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/eb/5a/26cdb1b10a55ac6eb11a738cea14865fa753606c4897d7be0f5dc230df00/faker-39.0.0-py3-none-any.whl", hash = "sha256:c72f1fca8f1a24b8da10fcaa45739135a19772218ddd61b86b7ea1b8c790dce7", size = 1980775, upload-time = "2025-12-17T19:19:02.926Z" },
+]
+
+[[package]]
 name = "hhs-hcc-sql-container"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "dbt-core" },
     { name = "dbt-sqlserver" },
+    { name = "faker" },
     { name = "pandas" },
 ]
 
@@ -391,6 +404,7 @@ dependencies = [
 requires-dist = [
     { name = "dbt-core", specifier = ">=1.10.15" },
     { name = "dbt-sqlserver", specifier = ">=1.9.0" },
+    { name = "faker", specifier = ">=39.0.0" },
     { name = "pandas", specifier = ">=2.3.3" },
 ]
 

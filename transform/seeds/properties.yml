@@ -1,7 +1,7 @@
 version: 2
 
 seeds:
-  - name: DX_Mapping_Table
+  - name: dx_mapping_table
     description: "Maps diagnosis codes to HHS-HCC condition categories (CC) and additional CCs, with age/sex and effective-date constraints."
     columns:
       - name: DGNS_CD
@@ -25,7 +25,7 @@ seeds:
       - name: ACC_CD
         description: "Additional condition category code (if applicable)."
 
-  - name: NDC_RXC
+  - name: ndc_rxc
     description: "Maps NDC drug codes to RxC categories used in the model."
     columns:
       - name: NDC
@@ -33,7 +33,7 @@ seeds:
       - name: RXC
         description: "RxC category code."
 
-  - name: HCPCSRXC
+  - name: hcpcsrxc
     description: "Maps HCPCS codes to RXC categories (crosswalk used for certain service codes)."
     columns:
       - name: HCPCS_CODE
@@ -41,7 +41,7 @@ seeds:
       - name: RXC
         description: "RxC category code."
 
-  - name: ServiceCodeReference
+  - name: servicecodereference
     description: "Service code reference table with service type, effective dates, and risk adjustment eligibility indicator."
     columns:
       - name: SRVC_CD
@@ -55,7 +55,7 @@ seeds:
       - name: CPT_HCPCSELGBL_RISKADJSTMT_IND
         description: "Risk adjustment eligible indicator (Y/N)."
 
-  - name: RiskScoreFactors
+  - name: riskscorefactors
     description: "Model coefficients by model year and metal level used to compute risk scores."
     columns:
       - name: Model
@@ -77,7 +77,7 @@ seeds:
       - name: Model_Year
         description: "Model year for the coefficients."
 
-  - name: CSR_Adj_Factors
+  - name: csr_adj_factors
     description: "CSR adjustment factors by CSR code and model year."
     columns:
       - name: CSR_Code
@@ -89,7 +89,7 @@ seeds:
       - name: adj_factor
         description: "CSR adjustment factor multiplier."
 
-  - name: Federal_Age_Curve
+  - name: federal_age_curve
     description: "Federal age curve premium ratios by age."
     columns:
       - name: Age
@@ -107,7 +107,7 @@ seeds:
       - name: av
         description: "Actuarial value."
 
-  - name: Rating_Area_CountyMap
+  - name: rating_area_countymap
     description: "Maps state and geography (county/zip) to rating area and related geographic metadata."
     columns:
       - name: State
@@ -129,7 +129,7 @@ seeds:
       - name: FIPS
         description: "FIPS code (if applicable)."
 
-  - name: Statewide_RA_Factors
+  - name: statewide_ra_factors
     description: "Statewide rating area factor inputs by market and year."
     columns:
       - name: State
@@ -153,7 +153,7 @@ seeds:
       - name: Year
         description: "Calendar/model year."
 
-  - name: GCF
+  - name: gcf
     description: "Geographic cost factors by state, rating area, market, and year."
     columns:
       - name: State
@@ -168,5 +168,20 @@ seeds:
         description: "Calendar/model year."
       - name: Market
         description: "Market indicator."
-      - name: rating_area_text
-        description: "Computed rating area label (e.g., R-<STATE><NNN>)."
+
+  - name: pharmacyclaims
+    description: "Pharmacy claim lines (input) used by the DIY model."
+    config:
+      column_types:
+        NDC: varchar(50)
+    columns:
+      - name: MemberID
+        description: "Member identifier; joins to Enrollment."
+      - name: ClaimNumber
+        description: "Claim identifier."
+      - name: NDC
+        description: "National Drug Code used to map to RXC."
+      - name: FilledDate
+        description: "Fill date used for eligibility and mapping."
+      - name: PaidDate
+        description: "Paid date (not always used for eligibility logic)."

@@ -1,2 +1,2 @@
 select *
-from {{ source('edge', 'MedicalClaims') }}
+from {{ source('edge', 'medicalclaims') }}

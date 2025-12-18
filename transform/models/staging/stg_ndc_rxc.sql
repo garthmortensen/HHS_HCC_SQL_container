@@ -1,1 +1,1 @@
-select * from {{ ref('NDC_RXC') }}
+select * from {{ ref('ndc_rxc') }}

@@ -1,1 +1,1 @@
-select * from {{ ref('ServiceCodeReference') }}
+select * from {{ ref('servicecodereference') }}

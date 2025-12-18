@@ -19,3 +19,22 @@ clean-targets:
 models:
   hhs_hcc_dw:
     +materialized: view
+
+seeds:
+  hhs_hcc_dw:
+    enrollment:
+      +post-hook:
+        - "DELETE FROM dbo.Enrollment"
+        - "INSERT INTO dbo.Enrollment (MemberID, Gender, BirthDate, HIOS_ID, EffDat, Expdat, MetalLevel, Market, State, SubscriberFlag, Premium) SELECT MemberID, Gender, DOB, PlanID, EnrollmentStart, EnrollmentEnd, MetalLevel, Market, 'VA', 'Y', 0 FROM {{ this }}"
+    medicalclaims:
+      +post-hook:
+        - "DELETE FROM dbo.MedicalClaims"
+        - "INSERT INTO dbo.MedicalClaims (MemberID, ClaimNumber, LineNumber, StatementFrom, StatementTo, LineServiceDateFrom, LineServiceDateTo, FormType, DX1, BilledAmount, AllowedAmount, PaidAmount) SELECT MemberID, ClaimID, LineNumber, ServiceFromDate, ServiceToDate, ServiceFromDate, ServiceToDate, FormType, DX1, BilledAmount, AllowedAmount, PaidAmount FROM {{ this }}"
+    pharmacyclaims:
+      +post-hook:
+        - "DELETE FROM dbo.PharmacyClaims"
+        - "INSERT INTO dbo.PharmacyClaims (MemberID, ClaimNumber, NDC, FilledDate, PaidDate, BilledAmount, AllowedAmount, PaidAmount) SELECT MemberID, ClaimID, NDC, FilledDate, PaidDate, BilledAmount, AllowedAmount, PaidAmount FROM {{ this }}"
+    supplemental:
+      +post-hook:
+        - "DELETE FROM dbo.Supplemental"
+        - "INSERT INTO dbo.Supplemental (ClaimNumber, EDGEClaimNumber, DX, AddDeleteFlag) SELECT ClaimID, ClaimID, DX, AddDeleteFlag FROM {{ this }}"

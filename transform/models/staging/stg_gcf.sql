@@ -1,1 +1,1 @@
-select * from {{ ref('GCF') }}
+select * from {{ ref('gcf') }}

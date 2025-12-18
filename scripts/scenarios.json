@@ -1,0 +1,2854 @@
+{
+  "catastrophic": [
+    {
+      "name": "Neonatal Intensive Care (NICU Level IV)",
+      "specialty": "Neonatology",
+      "diagnoses": [
+        "KB00",
+        "KA00"
+      ],
+      "procedures": [
+        "99468",
+        "99469"
+      ],
+      "drugs": [
+        "Surfactant",
+        "Ampicillin",
+        "Gentamicin"
+      ],
+      "service_category": "Inpatient",
+      "cost_range": [
+        50000.0,
+        350000.0
+      ],
+      "length_of_stay_range": [
+        15,
+        90
+      ],
+      "age_range": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    {
+      "name": "Ebola Virus Disease Isolation",
+      "specialty": "Infectious Disease",
+      "diagnoses": [
+        "1D60"
+      ],
+      "procedures": [
+        "99291",
+        "99292"
+      ],
+      "drugs": [
+        "Remdesivir",
+        "IV Fluids",
+        "Monoclonal Antibodies"
+      ],
+      "service_category": "Inpatient",
+      "cost_range": [
+        80000.0,
+        250000.0
+      ],
+      "length_of_stay_range": [
+        14,
+        40
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 65
+      }
+    },
+    {
+      "name": "CAR-T Cell Therapy (Lymphoma)",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2B30"
+      ],
+      "procedures": [
+        "0540T",
+        "Q2042"
+      ],
+      "drugs": [
+        "Tocilizumab"
+      ],
+      "service_category": "Inpatient",
+      "cost_range": [
+        400000.0,
+        650000.0
+      ],
+      "length_of_stay_range": [
+        14,
+        30
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 75
+      }
+    },
+    {
+      "name": "Severe Burn Treatment (ICU >50% BSA)",
+      "specialty": "Burn Surgery",
+      "diagnoses": [
+        "ND90"
+      ],
+      "procedures": [
+        "15100",
+        "99291"
+      ],
+      "drugs": [
+        "Morphine",
+        "Silver Sulfadiazine"
+      ],
+      "service_category": "Inpatient",
+      "cost_range": [
+        150000.0,
+        800000.0
+      ],
+      "length_of_stay_range": [
+        30,
+        120
+      ],
+      "age_range": {
+        "min": 5,
+        "max": 80
+      }
+    },
+    {
+      "name": "SMA Gene Therapy (Zolgensma)",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8B60"
+      ],
+      "procedures": [
+        "96372"
+      ],
+      "drugs": [
+        "Onasemnogene abeparvovec"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1800000.0,
+        2200000.0
+      ],
+      "length_of_stay_range": [
+        1,
+        2
+      ],
+      "age_range": {
+        "min": 0,
+        "max": 2
+      }
+    },
+    {
+      "name": "Kidney Transplant",
+      "specialty": "Transplant Surgery",
+      "diagnoses": [
+        "GB61"
+      ],
+      "procedures": [
+        "50360"
+      ],
+      "drugs": [
+        "Tacrolimus",
+        "Mycophenolate"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        90000.0,
+        180000.0
+      ],
+      "length_of_stay_range": [
+        5,
+        14
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 70
+      }
+    }
+  ],
+  "chronic_management": [
+    {
+      "name": "Hypertension Management",
+      "specialty": "Family Medicine",
+      "diagnoses": [
+        "BA00"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Lisinopril",
+        "Amlodipine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Type 2 Diabetes Checkup",
+      "specialty": "Internal Medicine",
+      "diagnoses": [
+        "5A11"
+      ],
+      "procedures": [
+        "99214",
+        "83036"
+      ],
+      "drugs": [
+        "Metformin",
+        "Sitagliptin"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Hyperlipidemia Management",
+      "specialty": "Internal Medicine",
+      "diagnoses": [
+        "5C80"
+      ],
+      "procedures": [
+        "99213",
+        "80061"
+      ],
+      "drugs": [
+        "Atorvastatin"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "COPD Exacerbation",
+      "specialty": "Internal Medicine",
+      "diagnoses": [
+        "CA22"
+      ],
+      "procedures": [
+        "99214",
+        "94640"
+      ],
+      "drugs": [
+        "Prednisone",
+        "Azithromycin"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Hypothyroidism Follow-up",
+      "specialty": "Internal Medicine",
+      "diagnoses": [
+        "5A00"
+      ],
+      "procedures": [
+        "99213",
+        "84443"
+      ],
+      "drugs": [
+        "Levothyroxine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Childhood Asthma",
+      "specialty": "Pediatrics",
+      "diagnoses": [
+        "CA23"
+      ],
+      "procedures": [
+        "99214",
+        "94010"
+      ],
+      "drugs": [
+        "Fluticasone",
+        "Montelukast"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 1,
+        "max": 18
+      }
+    },
+    {
+      "name": "Heart Failure Management",
+      "specialty": "Cardiology",
+      "diagnoses": [
+        "BD10"
+      ],
+      "procedures": [
+        "99215"
+      ],
+      "drugs": [
+        "Furosemide",
+        "Carvedilol"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Psoriasis Treatment",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "EA90"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Clobetasol",
+        "Adalimumab"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Knee Osteoarthritis Injection",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "FA01"
+      ],
+      "procedures": [
+        "20610"
+      ],
+      "drugs": [
+        "Triamcinolone",
+        "Lidocaine"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Major Depressive Disorder",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6A70"
+      ],
+      "procedures": [
+        "90792"
+      ],
+      "drugs": [
+        "Sertraline"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Generalized Anxiety Disorder",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6B00"
+      ],
+      "procedures": [
+        "90834"
+      ],
+      "drugs": [
+        "Escitalopram"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "ADHD Management",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6A05"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Methylphenidate"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Bipolar Disorder",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6A60"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Lithium",
+        "Quetiapine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Type 1 Diabetes Management",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "5A10"
+      ],
+      "procedures": [
+        "99214",
+        "95251"
+      ],
+      "drugs": [
+        "Insulin Glargine",
+        "Insulin Lispro"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Osteoporosis",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "FB83"
+      ],
+      "procedures": [
+        "99213",
+        "77080"
+      ],
+      "drugs": [
+        "Alendronate"
+      ],
+      "service_category": "Radiology",
+      "cost_range": [
+        500.0,
+        3000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 65,
+        "max": 95
+      }
+    },
+    {
+      "name": "Migraine Headache",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A80"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Sumatriptan",
+        "Topiramate"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Epilepsy Management",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A60"
+      ],
+      "procedures": [
+        "99214",
+        "95819"
+      ],
+      "drugs": [
+        "Levetiracetam"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Parkinson's Disease",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A20"
+      ],
+      "procedures": [
+        "99215"
+      ],
+      "drugs": [
+        "Carbidopa-Levodopa"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 65,
+        "max": 95
+      }
+    },
+    {
+      "name": "Multiple Sclerosis",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A40"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Interferon Beta-1a"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Migraine with Aura",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A80.1"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Sumatriptan",
+        "Topiramate"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Epilepsy Management",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A60"
+      ],
+      "procedures": [
+        "95816",
+        "99214"
+      ],
+      "drugs": [
+        "Levetiracetam",
+        "Lamotrigine"
+      ],
+      "service_category": "Diagnostic",
+      "cost_range": [
+        800.0,
+        2500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Parkinson's Disease Follow-up",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A20"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Carbidopa-Levodopa",
+        "Ropinirole"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 65,
+        "max": 95
+      }
+    },
+    {
+      "name": "Multiple Sclerosis Treatment",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A40"
+      ],
+      "procedures": [
+        "96365",
+        "99215"
+      ],
+      "drugs": [
+        "Ocrelizumab"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1000.0,
+        5000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Alzheimer's Disease Consultation",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8A20"
+      ],
+      "procedures": [
+        "99205",
+        "96116"
+      ],
+      "drugs": [
+        "Donepezil",
+        "Memantine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        200.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 65,
+        "max": 95
+      }
+    },
+    {
+      "name": "GERD Management",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "DA22"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Omeprazole",
+        "Famotidine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Crohn's Disease Flare",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "DD70"
+      ],
+      "procedures": [
+        "99215",
+        "96365"
+      ],
+      "drugs": [
+        "Infliximab",
+        "Prednisone"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1000.0,
+        5000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Hepatitis C Treatment",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "1E50"
+      ],
+      "procedures": [
+        "99214",
+        "80076"
+      ],
+      "drugs": [
+        "Sofosbuvir-Velpatasvir"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Hypothyroidism Follow-up",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "5A00"
+      ],
+      "procedures": [
+        "99213",
+        "84443"
+      ],
+      "drugs": [
+        "Levothyroxine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Osteoporosis Treatment",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "FB83"
+      ],
+      "procedures": [
+        "96372"
+      ],
+      "drugs": [
+        "Denosumab",
+        "Alendronate"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1000.0,
+        5000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 65,
+        "max": 95
+      }
+    },
+    {
+      "name": "Major Depressive Disorder",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6A70"
+      ],
+      "procedures": [
+        "90792",
+        "90834"
+      ],
+      "drugs": [
+        "Sertraline",
+        "Bupropion"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Generalized Anxiety Disorder",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6B00"
+      ],
+      "procedures": [
+        "90834"
+      ],
+      "drugs": [
+        "Escitalopram",
+        "Buspirone"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Bipolar Disorder Management",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6A60"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Lithium",
+        "Quetiapine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Schizophrenia Maintenance",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6A20"
+      ],
+      "procedures": [
+        "99214",
+        "96372"
+      ],
+      "drugs": [
+        "Risperidone",
+        "Olanzapine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "ADHD Evaluation",
+      "specialty": "Psychiatry",
+      "diagnoses": [
+        "6A05"
+      ],
+      "procedures": [
+        "90792"
+      ],
+      "drugs": [
+        "Methylphenidate",
+        "Amphetamine-Dextroamphetamine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Menopause Symptom Management",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "GA10"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Estradiol",
+        "Progesterone"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 45,
+        "max": 60
+      }
+    },
+    {
+      "name": "Endometriosis Consult",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "GA00"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Leuprolide"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        200.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Osteoarthritis Management",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "FA00"
+      ],
+      "procedures": [
+        "99213",
+        "20610"
+      ],
+      "drugs": [
+        "Diclofenac",
+        "Triamcinolone"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1000.0,
+        5000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Psoriasis Biologic Therapy",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "EA90"
+      ],
+      "procedures": [
+        "99214",
+        "96372"
+      ],
+      "drugs": [
+        "Adalimumab"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1000.0,
+        5000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Heart Failure Management",
+      "specialty": "Cardiology",
+      "diagnoses": [
+        "BD10"
+      ],
+      "procedures": [
+        "99214",
+        "93000"
+      ],
+      "drugs": [
+        "Furosemide",
+        "Carvedilol"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Pediatric Asthma",
+      "specialty": "Pediatrics",
+      "diagnoses": [
+        "CA23"
+      ],
+      "procedures": [
+        "99213",
+        "94010"
+      ],
+      "drugs": [
+        "Fluticasone",
+        "Montelukast"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 1,
+        "max": 18
+      }
+    }
+  ],
+  "preventive": [
+    {
+      "name": "Annual Physical Exam",
+      "specialty": "Family Medicine",
+      "diagnoses": [
+        "QA00"
+      ],
+      "procedures": [
+        "99395"
+      ],
+      "drugs": [],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Well Child Visit (Infant)",
+      "specialty": "Pediatrics",
+      "diagnoses": [
+        "QA00.0"
+      ],
+      "procedures": [
+        "99391"
+      ],
+      "drugs": [],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    {
+      "name": "Colonoscopy Screening",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "QA00"
+      ],
+      "procedures": [
+        "45378"
+      ],
+      "drugs": [
+        "Propofol"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 45,
+        "max": 85
+      }
+    },
+    {
+      "name": "Screening Colonoscopy",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "QA00"
+      ],
+      "procedures": [
+        "45378"
+      ],
+      "drugs": [
+        "Propofol"
+      ],
+      "service_category": "Diagnostic",
+      "cost_range": [
+        800.0,
+        2500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 45,
+        "max": 85
+      }
+    },
+    {
+      "name": "Well-Woman Exam",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "QA00"
+      ],
+      "procedures": [
+        "99395",
+        "88142"
+      ],
+      "drugs": [],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Skin Cancer Screening",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "QA00"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        150.0,
+        450.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    }
+  ],
+  "acute_illness": [
+    {
+      "name": "Acute Bronchitis",
+      "specialty": "Family Medicine",
+      "diagnoses": [
+        "CA40"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Benzonatate",
+        "Albuterol"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Acute Otitis Media",
+      "specialty": "Pediatrics",
+      "diagnoses": [
+        "AB00"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Amoxicillin"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 1,
+        "max": 18
+      }
+    },
+    {
+      "name": "Streptococcal Pharyngitis",
+      "specialty": "Pediatrics",
+      "diagnoses": [
+        "1A40"
+      ],
+      "procedures": [
+        "99213",
+        "87880"
+      ],
+      "drugs": [
+        "Penicillin V"
+      ],
+      "service_category": "Pathology & Lab",
+      "cost_range": [
+        50.0,
+        250.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 1,
+        "max": 18
+      }
+    },
+    {
+      "name": "Routine Pap Smear",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "QA00"
+      ],
+      "procedures": [
+        "99395",
+        "88142"
+      ],
+      "drugs": [],
+      "service_category": "Pathology & Lab",
+      "cost_range": [
+        50.0,
+        250.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Gastroesophageal Reflux Disease",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "DA22"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Omeprazole"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Urinary Tract Infection",
+      "specialty": "Urology",
+      "diagnoses": [
+        "GB90"
+      ],
+      "procedures": [
+        "99213",
+        "81000"
+      ],
+      "drugs": [
+        "Ciprofloxacin"
+      ],
+      "service_category": "Pathology & Lab",
+      "cost_range": [
+        50.0,
+        250.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Recurrent UTI",
+      "specialty": "Urology",
+      "diagnoses": [
+        "GC08"
+      ],
+      "procedures": [
+        "99213",
+        "81001"
+      ],
+      "drugs": [
+        "Nitrofurantoin",
+        "Ciprofloxacin"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Otitis Media",
+      "specialty": "Pediatrics",
+      "diagnoses": [
+        "AB00"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Amoxicillin"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 1,
+        "max": 18
+      }
+    }
+  ],
+  "maternity": [
+    {
+      "name": "Prenatal Visit (First Trimester)",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "JA00"
+      ],
+      "procedures": [
+        "59400"
+      ],
+      "drugs": [
+        "Prenatal Vitamins"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 40
+      }
+    },
+    {
+      "name": "Prenatal Visit",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "QA40"
+      ],
+      "procedures": [
+        "59400"
+      ],
+      "drugs": [
+        "Prenatal Vitamins"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 40
+      }
+    }
+  ],
+  "oncology": [
+    {
+      "name": "Breast Cancer Follow-up",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2C60"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Tamoxifen"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        150.0,
+        450.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Chemotherapy Infusion",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2C80"
+      ],
+      "procedures": [
+        "96413"
+      ],
+      "drugs": [
+        "Carboplatin",
+        "Paclitaxel"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        1000.0,
+        5000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Lung Cancer Consultation",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2C25"
+      ],
+      "procedures": [
+        "99205"
+      ],
+      "drugs": [],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        300.0,
+        750.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Anemia in Neoplastic Disease",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "3A90"
+      ],
+      "procedures": [
+        "99213",
+        "85025"
+      ],
+      "drugs": [
+        "Epoetin Alfa"
+      ],
+      "service_category": "Pathology & Lab",
+      "cost_range": [
+        50.0,
+        250.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Bladder Cancer Surveillance",
+      "specialty": "Urology",
+      "diagnoses": [
+        "2C94"
+      ],
+      "procedures": [
+        "52000"
+      ],
+      "drugs": [
+        "BCG Vaccine"
+      ],
+      "service_category": "Diagnostic",
+      "cost_range": [
+        1200.0,
+        3750.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Breast Cancer Chemotherapy",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2C60"
+      ],
+      "procedures": [
+        "96413",
+        "99214"
+      ],
+      "drugs": [
+        "Doxorubicin",
+        "Cyclophosphamide"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1500.0,
+        7500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Lung Cancer Immunotherapy",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2C25"
+      ],
+      "procedures": [
+        "96413",
+        "99215"
+      ],
+      "drugs": [
+        "Pembrolizumab"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1500.0,
+        7500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Colon Cancer Follow-up",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2B90"
+      ],
+      "procedures": [
+        "99214",
+        "84153"
+      ],
+      "drugs": [
+        "Fluorouracil"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        150.0,
+        450.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Leukemia Maintenance",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2A00"
+      ],
+      "procedures": [
+        "99214",
+        "85025"
+      ],
+      "drugs": [
+        "Imatinib"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Lymphoma Staging",
+      "specialty": "Oncology",
+      "diagnoses": [
+        "2B30"
+      ],
+      "procedures": [
+        "71260",
+        "99214"
+      ],
+      "drugs": [],
+      "service_category": "Diagnostic",
+      "cost_range": [
+        800.0,
+        2500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Melanoma Excision",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "2C30"
+      ],
+      "procedures": [
+        "11602"
+      ],
+      "drugs": [
+        "Lidocaine"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    }
+  ],
+  "injury_ortho": [
+    {
+      "name": "Lower Back Pain",
+      "specialty": "Family Medicine",
+      "diagnoses": [
+        "ME84.2"
+      ],
+      "procedures": [
+        "99213",
+        "97110"
+      ],
+      "drugs": [
+        "Ibuprofen",
+        "Cyclobenzaprine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Chest Pain Evaluation",
+      "specialty": "Cardiology",
+      "diagnoses": [
+        "MB23.3"
+      ],
+      "procedures": [
+        "99204",
+        "93015"
+      ],
+      "drugs": [],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Distal Radius Fracture",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "NC12"
+      ],
+      "procedures": [
+        "25600"
+      ],
+      "drugs": [
+        "Acetaminophen-Hydrocodone"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Fracture Casting",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "NC12"
+      ],
+      "procedures": [
+        "29075",
+        "99203"
+      ],
+      "drugs": [
+        "Acetaminophen-Codeine"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Rotator Cuff Injury",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "FB53"
+      ],
+      "procedures": [
+        "99204",
+        "73030"
+      ],
+      "drugs": [
+        "Naproxen"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    }
+  ],
+  "surgical": [
+    {
+      "name": "Skin Biopsy",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "EK90"
+      ],
+      "procedures": [
+        "11100"
+      ],
+      "drugs": [
+        "Lidocaine"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Actinic Keratosis Cryotherapy",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "EK91"
+      ],
+      "procedures": [
+        "17000"
+      ],
+      "drugs": [],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Kidney Stone Treatment",
+      "specialty": "Urology",
+      "diagnoses": [
+        "GB90"
+      ],
+      "procedures": [
+        "50590"
+      ],
+      "drugs": [
+        "Tamsulosin",
+        "Ketorolac"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Benign Prostatic Hyperplasia (BPH)",
+      "specialty": "Urology",
+      "diagnoses": [
+        "GA90"
+      ],
+      "procedures": [
+        "52601"
+      ],
+      "drugs": [
+        "Finasteride",
+        "Tamsulosin"
+      ],
+      "service_category": "Surgery",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        1
+      ],
+      "age_range": {
+        "min": 50,
+        "max": 90
+      }
+    },
+    {
+      "name": "Knee Replacement Follow-up",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "FA01"
+      ],
+      "procedures": [
+        "99213",
+        "73560"
+      ],
+      "drugs": [
+        "Celecoxib"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        2000.0,
+        15000.0
+      ],
+      "length_of_stay_range": [
+        2,
+        5
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    }
+  ],
+  "general_medicine": [
+    {
+      "name": "Atrial Fibrillation",
+      "specialty": "Cardiology",
+      "diagnoses": [
+        "BC81.3"
+      ],
+      "procedures": [
+        "99214",
+        "93000"
+      ],
+      "drugs": [
+        "Warfarin",
+        "Metoprolol"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Coronary Artery Disease",
+      "specialty": "Cardiology",
+      "diagnoses": [
+        "BA80"
+      ],
+      "procedures": [
+        "99214",
+        "93306"
+      ],
+      "drugs": [
+        "Aspirin",
+        "Clopidogrel"
+      ],
+      "service_category": "Medicine",
+      "cost_range": [
+        100.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Acne Vulgaris",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "ED80"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Tretinoin",
+        "Doxycycline"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Rotator Cuff Tendinitis",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "FB53"
+      ],
+      "procedures": [
+        "99213",
+        "97140"
+      ],
+      "drugs": [
+        "Naproxen"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Carpal Tunnel Syndrome",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "8C10"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Menopausal Symptoms",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "GA10"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Estradiol"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Uterine Fibroids",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "2B60"
+      ],
+      "procedures": [
+        "99214",
+        "76856"
+      ],
+      "drugs": [],
+      "service_category": "Radiology",
+      "cost_range": [
+        500.0,
+        3000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Hyperthyroidism",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "5A02"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Methimazole"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Irritable Bowel Syndrome",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "DD91"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Dicyclomine"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Benign Prostatic Hyperplasia",
+      "specialty": "Urology",
+      "diagnoses": [
+        "GA60"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Tamsulosin"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Kidney Stone",
+      "specialty": "Urology",
+      "diagnoses": [
+        "GB70"
+      ],
+      "procedures": [
+        "99214",
+        "74176"
+      ],
+      "drugs": [
+        "Ketorolac"
+      ],
+      "service_category": "Radiology",
+      "cost_range": [
+        500.0,
+        3000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Stroke Follow-up",
+      "specialty": "Neurology",
+      "diagnoses": [
+        "8B10"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Clopidogrel",
+        "Atorvastatin"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Erectile Dysfunction Consult",
+      "specialty": "Urology",
+      "diagnoses": [
+        "HA01"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Sildenafil",
+        "Tadalafil"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        200.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "IBS Consultation",
+      "specialty": "Gastroenterology",
+      "diagnoses": [
+        "DD91"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Dicyclomine",
+        "Linaclotide"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        200.0,
+        500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Hyperthyroidism Management",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "5A02"
+      ],
+      "procedures": [
+        "99214",
+        "84436"
+      ],
+      "drugs": [
+        "Methimazole",
+        "Propranolol"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Adrenal Insufficiency",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "5A74"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Hydrocortisone",
+        "Fludrocortisone"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "PCOS Management",
+      "specialty": "Endocrinology",
+      "diagnoses": [
+        "5A80"
+      ],
+      "procedures": [
+        "99214"
+      ],
+      "drugs": [
+        "Metformin",
+        "Spironolactone"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Ovarian Cyst Monitoring",
+      "specialty": "OB/GYN",
+      "diagnoses": [
+        "GA11"
+      ],
+      "procedures": [
+        "76830",
+        "99213"
+      ],
+      "drugs": [],
+      "service_category": "Diagnostic",
+      "cost_range": [
+        800.0,
+        2500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Carpal Tunnel Injection",
+      "specialty": "Orthopedics",
+      "diagnoses": [
+        "8C10"
+      ],
+      "procedures": [
+        "20550"
+      ],
+      "drugs": [
+        "Methylprednisolone"
+      ],
+      "service_category": "Therapeutic",
+      "cost_range": [
+        1000.0,
+        5000.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Acne Treatment",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "ED80"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Isotretinoin",
+        "Doxycycline"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Eczema Flare",
+      "specialty": "Dermatology",
+      "diagnoses": [
+        "EA80"
+      ],
+      "procedures": [
+        "99213"
+      ],
+      "drugs": [
+        "Triamcinolone Ointment",
+        "Tacrolimus"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Atrial Fibrillation Control",
+      "specialty": "Cardiology",
+      "diagnoses": [
+        "BC81"
+      ],
+      "procedures": [
+        "99214",
+        "93000"
+      ],
+      "drugs": [
+        "Warfarin",
+        "Diltiazem"
+      ],
+      "service_category": "Evaluation & Management",
+      "cost_range": [
+        100.0,
+        300.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    },
+    {
+      "name": "Coronary Artery Disease",
+      "specialty": "Cardiology",
+      "diagnoses": [
+        "BA80"
+      ],
+      "procedures": [
+        "99214",
+        "93306"
+      ],
+      "drugs": [
+        "Aspirin",
+        "Clopidogrel"
+      ],
+      "service_category": "Diagnostic",
+      "cost_range": [
+        800.0,
+        2500.0
+      ],
+      "length_of_stay_range": [
+        0,
+        0
+      ],
+      "age_range": {
+        "min": 18,
+        "max": 85
+      }
+    }
+  ]
+}

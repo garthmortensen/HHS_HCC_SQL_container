@@ -1,1 +1,1 @@
-select * from {{ ref('HCPCSRXC') }}
+select * from {{ ref('hcpcsrxc') }}

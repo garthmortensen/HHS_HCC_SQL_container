@@ -1,1 +1,1 @@
-select * from {{ ref('DX_Mapping_Table') }}
+select * from {{ ref('dx_mapping_table') }}

@@ -1,1 +1,1 @@
-select * from {{ ref('Federal_Age_Curve') }}
+select * from {{ ref('federal_age_curve') }}

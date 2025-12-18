@@ -1,1 +1,1 @@
-select * from {{ ref('CSR_Adj_Factors') }}
+select * from {{ ref('csr_adj_factors') }}

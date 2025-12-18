@@ -5,7 +5,7 @@ sources:
     database: "{{ env_var('MSSQL_DB', 'edge') }}"
     schema: dbo
     tables:
-      - name: Enrollment
+      - name: enrollment
         description: "Enrollment spans (input) used by the DIY model."
         columns:
           - name: MemberID
@@ -20,7 +20,7 @@ sources:
             description: "Member birth date used for age calculations."
           - name: Gender
             description: "Member gender used for coefficient selection."
-      - name: MedicalClaims
+      - name: medicalclaims
         description: "Medical claim lines (input) used by the DIY model."
         columns:
           - name: MemberID
@@ -33,7 +33,7 @@ sources:
             description: "Service date used for effective-dated joins and eligibility."
           - name: PaidDate
             description: "Paid date (not always used for eligibility logic)."
-      - name: PharmacyClaims
+      - name: pharmacyclaims
         description: "Pharmacy claim lines (input) used by the DIY model."
         columns:
           - name: MemberID
@@ -46,7 +46,7 @@ sources:
             description: "Fill date used for eligibility and mapping."
           - name: PaidDate
             description: "Paid date (not always used for eligibility logic)."
-      - name: Supplemental
+      - name: supplemental
         description: "Supplemental diagnoses (input), joined to MedicalClaims by ClaimNumber."
         columns:
           - name: ClaimNumber

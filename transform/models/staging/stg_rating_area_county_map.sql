@@ -1,1 +1,1 @@
-select * from {{ ref('Rating_Area_CountyMap') }}
+select * from {{ ref('rating_area_countymap') }}

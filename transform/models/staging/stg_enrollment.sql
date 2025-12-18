@@ -1,2 +1,2 @@
 select *
-from {{ source('edge', 'Enrollment') }}
+from {{ source('edge', 'enrollment') }}

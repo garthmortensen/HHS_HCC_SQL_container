@@ -1,1 +1,1 @@
-select * from {{ ref('RiskScoreFactors') }}
+select * from {{ ref('riskscorefactors') }}
