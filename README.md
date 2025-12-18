@@ -2,6 +2,15 @@
 
 Documentation: https://garthmortensen.github.io/HHS_HCC_SQL_container
 
+## Why Implement This?
+
+For new Risk Adjustment teams, this project offers a **transparent, zero-cost alternative** to expensive vendor "black box" solutions. By running the HHS-HCC model directly in your own SQL environment, you gain:
+
+*   **Full Visibility**: Audit every step of the calculation, from claim filtering to coefficient application.
+*   **Data Control**: Keep your sensitive member data within your own infrastructure.
+*   **Rapid Iteration**: Test scenarios and forecast scores instantly without waiting for vendor turnaround.
+*   **Foundation for Growth**: Built on standard SQL and dbt, it scales easily from a single analyst to a full data engineering team.
+
 ## Quick Start
 
 ### 1. Infrastructure (Container)
@@ -18,6 +27,11 @@ Documentation: https://garthmortensen.github.io/HHS_HCC_SQL_container
     podman compose -f containers/mssql/docker-compose.yml up -d
     ```
     *Wait for `Init complete` in logs (`podman logs -f hhs_hcc_mssql_init`).*
+
+3.  **Stop & Reset** (Destroys Data)
+    ```bash
+    podman compose -f containers/mssql/docker-compose.yml down -v
+    ```
 
 ### 2. Project Initialization (dbt)
 
@@ -76,6 +90,78 @@ You must populate all fields in this table other than the EPAI field, paid throu
 
 ### Pharmacy Claims
 - **Required**: MemberID, claimnumber, NDC, filleddate, paiddate, billedamount, allowedamount, and paidamount.
+
+## DIY Model Script Logic
+
+The `DIY-Model-Script/diy_model_script.sql` is the core calculation engine. It processes the input data to generate risk scores.
+
+```mermaid
+flowchart TD
+    Start([Start]) --> Config[Configuration: Year, State, Market]
+    Config --> Enr[Load Enrollment Data]
+    Enr --> EnrCalc[Calculate Age & Duration]
+    EnrCalc --> Claims[Filter Acceptable Claims]
+    Claims --> DxMap[Map Diagnoses to HCCs]
+    DxMap --> Supp[Apply Supplemental Adds/Deletes]
+    Supp --> RXC[Map RXCs from Pharmacy/Medical]
+    RXC --> Score[Calculate Risk Scores]
+    Score --> CSR[Apply CSR Adjustments]
+    CSR --> Update[Update hcc_list]
+    Update --> End([End])
+
+    subgraph Inputs
+    E[Enrollment]
+    M[MedicalClaims]
+    P[PharmacyClaims]
+    S[Supplemental]
+    end
+
+    E --> Enr
+    M --> Claims
+    P --> RXC
+    S --> Supp
+```
+
+### Step-by-Step Process
+1.  **Enrollment Staging**: Populates the base `hcc_list` from the `Enrollment` table and calculates member age and enrollment duration.
+2.  **Claims Filtering**: Identifies acceptable medical claims based on Bill Types and Service Codes.
+3.  **Diagnosis Mapping**: Maps ICD-10 codes to Hierarchical Condition Categories (HCCs) using the `dx_mapping_table`, applying age/sex edits and `Supplemental` diagnosis adds/deletes.
+4.  **RXC Mapping**: Maps National Drug Codes (NDCs) and HCPCS codes to Prescription Drug Categories (RXCs).
+5.  **Risk Scoring**: Calculates the final risk score by summing coefficients for:
+    *   Demographic factors (Age/Sex)
+    *   HCCs
+    *   RXCs
+    *   Interaction terms (Severe illness, Transplant, etc.)
+6.  **CSR Adjustment**: Applies Cost-Sharing Reduction factors to the raw scores.
+
+## Output Data Model
+
+The script outputs to `dbo.hcc_list`. This table contains one row per member per enrollment span (aggregated) with their calculated risk scores and flags for every triggered HCC and RXC.
+
+```mermaid
+erDiagram
+    hcc_list {
+        int id PK
+        varchar MBR_ID "Member ID"
+        varchar EDGE_MemberID
+        date EFF_DATE
+        date EXP_DATE
+        varchar METAL
+        varchar HIOS
+        int CSR
+        date DOB
+        varchar SEX
+        float risk_score "Final Risk Score"
+        float platinum_risk_score
+        float gold_risk_score
+        float silver_risk_score
+        float bronze_risk_score
+        float catastrophic_risk_score
+        int HHS_HCC001 "HCC Flag (0/1)"
+        int RXC_01 "RXC Flag (0/1)"
+        int SEVERE_V3 "Interaction Flag"
+    }
+```
 
 ## Running the Model
 
