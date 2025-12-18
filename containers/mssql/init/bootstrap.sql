@@ -79,38 +79,11 @@ GO
 
 -- Include/execute the table creation + reference table scripts.
 -- `:r` is a sqlcmd include; the path is inside the container.
+PRINT 'Loading Input Tables...';
 :r "/workspace/Table-Load-Scripts/2 - Input Table Creation.sql"
 
-PRINT 'Loading CSR_Factors_Table.sql'
+-- Note: Reference tables (Factors, DX Mappings, etc.) are now loaded via 'dbt seed'
+-- and are no longer loaded here.
+
+PRINT 'Bootstrap complete.';
 GO
-:r "/workspace/Table-Load-Scripts/CSR_Factors_Table.sql"
-PRINT 'Loading dbo.DX_Mapping_Table.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.DX_Mapping_Table.Table.sql"
-PRINT 'Loading dbo.Federal_Age_Curve.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.Federal_Age_Curve.Table.sql"
-PRINT 'Loading dbo.GCF.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.GCF.Table.sql"
-PRINT 'Loading dbo.HCPCSRXC.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.HCPCSRXC.Table.sql"
-PRINT 'Loading dbo.metal_level_mapping.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.metal_level_mapping.Table.sql"
-PRINT 'Loading dbo.NDC_RXC.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.NDC_RXC.Table.sql"
-PRINT 'Loading dbo.Rating_Area_CountyMap.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.Rating_Area_CountyMap.Table.sql"
-PRINT 'Loading dbo.RiskScoreFactors.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.RiskScoreFactors.Table.sql"
-PRINT 'Loading dbo.ServiceCodeReference.Table.sql'
-GO
-:r "/workspace/Table-Load-Scripts/dbo.ServiceCodeReference.Table.sql"
-PRINT 'Loading statewide_factors.sql'
-GO
-:r "/workspace/Table-Load-Scripts/statewide_factors.sql"

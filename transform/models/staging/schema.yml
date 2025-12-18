@@ -71,3 +71,36 @@ models:
       - name: hios
         description: "HIOS identifier for the plan (including CSR variant when present)."
 
+
+  - name: stg_dx_mapping
+    description: "Staging view over DX_Mapping_Table seed."
+  
+  - name: stg_ndc_rxc
+    description: "Staging view over NDC_RXC seed."
+
+  - name: stg_hcpcs_rxc
+    description: "Staging view over HCPCSRXC seed."
+
+  - name: stg_service_code_reference
+    description: "Staging view over ServiceCodeReference seed."
+
+  - name: stg_risk_score_factors
+    description: "Staging view over RiskScoreFactors seed."
+
+  - name: stg_csr_adj_factors
+    description: "Staging view over CSR_Adj_Factors seed."
+
+  - name: stg_federal_age_curve
+    description: "Staging view over Federal_Age_Curve seed."
+
+  - name: stg_metal_level_mapping
+    description: "Staging view over metal_level_mapping seed."
+
+  - name: stg_rating_area_county_map
+    description: "Staging view over Rating_Area_CountyMap seed."
+
+  - name: stg_statewide_ra_factors
+    description: "Staging view over Statewide_RA_Factors seed."
+
+  - name: stg_gcf
+    description: "Staging view over GCF seed."
