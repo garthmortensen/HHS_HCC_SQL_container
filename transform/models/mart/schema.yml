@@ -3,5 +3,66 @@ version: 2
 models:
   - name: agg_member_risk_score
     description: "One row per member with max risk scores from `dbo.hcc_list`."
+    columns:
+      - name: mbr_id
+        description: "Member identifier."
+      - name: min_eff_date
+        description: "Earliest effective date in the period."
+      - name: max_exp_date
+        description: "Latest expiration date in the period."
+      - name: risk_score
+        description: "Maximum risk score for the member."
+      - name: risk_score_no_demog
+        description: "Maximum risk score excluding demographic factors."
+      - name: catastrophic_risk_score
+        description: "Maximum risk score if the member were in a Catastrophic plan."
+      - name: bronze_risk_score
+        description: "Maximum risk score if the member were in a Bronze plan."
+      - name: silver_risk_score
+        description: "Maximum risk score if the member were in a Silver plan."
+      - name: gold_risk_score
+        description: "Maximum risk score if the member were in a Gold plan."
+      - name: platinum_risk_score
+        description: "Maximum risk score if the member were in a Platinum plan."
+
   - name: fct_hcc_list
     description: "Fact-style view of HCC results (currently passthrough)."
+    columns:
+      - name: id
+        description: "Unique record identifier."
+      - name: mbr_id
+        description: "Member identifier."
+      - name: eff_date
+        description: "Coverage effective date."
+      - name: exp_date
+        description: "Coverage expiration date."
+      - name: metal
+        description: "Metal level of the plan."
+      - name: hios
+        description: "HIOS ID of the plan."
+      - name: csr
+        description: "Cost Sharing Reduction variant."
+      - name: dob
+        description: "Date of birth."
+      - name: sex
+        description: "Gender."
+      - name: state
+        description: "State code."
+      - name: ratingarea
+        description: "Rating area."
+      - name: market
+        description: "Market type (Individual/Small Group)."
+      - name: risk_score
+        description: "Calculated risk score."
+      - name: risk_score_no_demog
+        description: "Risk score excluding demographic factors."
+      - name: catastrophic_risk_score
+        description: "Risk score for Catastrophic metal level."
+      - name: bronze_risk_score
+        description: "Risk score for Bronze metal level."
+      - name: silver_risk_score
+        description: "Risk score for Silver metal level."
+      - name: gold_risk_score
+        description: "Risk score for Gold metal level."
+      - name: platinum_risk_score
+        description: "Risk score for Platinum metal level."

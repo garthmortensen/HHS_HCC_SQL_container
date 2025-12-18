@@ -74,33 +74,170 @@ models:
 
   - name: stg_dx_mapping
     description: "Staging view over DX_Mapping_Table seed."
+    columns:
+      - name: DGNS_CD
+        description: "Diagnosis code (ICD)."
+      - name: DGNS_CD_EFF_STRT_DT
+        description: "Diagnosis code mapping effective start date."
+      - name: DGNS_CD_EFF_END_DT
+        description: "Diagnosis code mapping effective end date."
+      - name: MIN_AGE_DGNS_INCLUDE
+        description: "Minimum age (inclusive) for diagnosis-to-CC mapping applicability."
+      - name: MAX_AGE_DGNS_EXCLUDE
+        description: "Maximum age (exclusive) for diagnosis-to-CC mapping applicability."
+      - name: CC_AGE_SPLIT_MIN_AGE_INC
+        description: "Minimum age (inclusive) for CC split applicability."
+      - name: CC_AGE_SPLIT_MAX_AGE_EXC
+        description: "Maximum age (exclusive) for CC split applicability."
+      - name: CC_SEX_SPLIT
+        description: "Sex restriction for CC split (e.g., M/F/ALL)."
+      - name: CC_CD
+        description: "Primary condition category code."
+      - name: ACC_CD
+        description: "Additional condition category code (if applicable)."
   
   - name: stg_ndc_rxc
     description: "Staging view over NDC_RXC seed."
+    columns:
+      - name: NDC
+        description: "National Drug Code (NDC)."
+      - name: RXC
+        description: "RxC category code."
 
   - name: stg_hcpcs_rxc
     description: "Staging view over HCPCSRXC seed."
+    columns:
+      - name: HCPCS_CODE
+        description: "HCPCS procedure code."
+      - name: RXC
+        description: "RxC category code."
 
   - name: stg_service_code_reference
     description: "Staging view over ServiceCodeReference seed."
+    columns:
+      - name: SRVC_CD
+        description: "Service code."
+      - name: SRVC_TYPE_CD
+        description: "Service type code."
+      - name: SRVC_CD_EFCTV_STRT_DT
+        description: "Service code effective start date."
+      - name: SRVC_CD_EFCTV_END_DT
+        description: "Service code effective end date."
+      - name: CPT_HCPCSELGBL_RISKADJSTMT_IND
+        description: "Risk adjustment eligible indicator (Y/N)."
 
   - name: stg_risk_score_factors
     description: "Staging view over RiskScoreFactors seed."
+    columns:
+      - name: Model
+        description: "Model identifier (e.g., adult/child/infant)."
+      - name: Variable
+        description: "Variable name (factor) used in the risk score formula."
+      - name: Variable_Used_in_Risk_Score_Formula
+        description: "Variable inclusion flag/name used in the formula."
+      - name: Platinum_Level
+        description: "Coefficient at Platinum AV/metal level."
+      - name: Gold_Level
+        description: "Coefficient at Gold AV/metal level."
+      - name: Silver_Level
+        description: "Coefficient at Silver AV/metal level."
+      - name: Bronze_Level
+        description: "Coefficient at Bronze AV/metal level."
+      - name: Catastrophic_Level
+        description: "Coefficient at Catastrophic AV/metal level."
+      - name: Model_Year
+        description: "Model year for the coefficients."
 
   - name: stg_csr_adj_factors
     description: "Staging view over CSR_Adj_Factors seed."
+    columns:
+      - name: CSR_Code
+        description: "CSR code."
+      - name: CSR_Desc
+        description: "CSR category description."
+      - name: model_year
+        description: "Model year the CSR factor applies to."
+      - name: adj_factor
+        description: "CSR adjustment factor multiplier."
 
   - name: stg_federal_age_curve
     description: "Staging view over Federal_Age_Curve seed."
+    columns:
+      - name: Age
+        description: "Age in years."
+      - name: Premium_Ratio
+        description: "Premium ratio (age factor) for the given age."
 
   - name: stg_metal_level_mapping
     description: "Staging view over metal_level_mapping seed."
+    columns:
+      - name: metal
+        description: "Metal level name (e.g., Bronze, Silver, Gold)."
+      - name: idf
+        description: "Induced demand factor."
+      - name: av
+        description: "Actuarial value."
 
   - name: stg_rating_area_county_map
     description: "Staging view over Rating_Area_CountyMap seed."
+    columns:
+      - name: State
+        description: "State name."
+      - name: Rating_Area
+        description: "Rating area label."
+      - name: County
+        description: "County name (if applicable)."
+      - name: COUNTY2
+        description: "County name (uppercased/normalized)."
+      - name: Zip
+        description: "Zip prefix or zip code (if applicable)."
+      - name: Market_Geographic_Rating_Divisions
+        description: "Geographic division type used for rating (e.g., counties, MSAs)."
+      - name: FFM
+        description: "Federally-facilitated marketplace indicator."
+      - name: State_Abb
+        description: "State abbreviation."
+      - name: FIPS
+        description: "FIPS code (if applicable)."
 
   - name: stg_statewide_ra_factors
     description: "Staging view over Statewide_RA_Factors seed."
+    columns:
+      - name: State
+        description: "State abbreviation."
+      - name: RA_Adj_Avg_Pre
+        description: "Risk adjustment adjusted average premium."
+      - name: Avg_pre
+        description: "Average premium."
+      - name: PLRS
+        description: "Plan liability risk score (PLRS)."
+      - name: ARF
+        description: "Allowable rating factor (ARF)."
+      - name: AV
+        description: "Actuarial value."
+      - name: IDF
+        description: "Induced demand factor."
+      - name: MM
+        description: "Member months."
+      - name: Market
+        description: "Market indicator."
+      - name: Year
+        description: "Calendar/model year."
 
   - name: stg_gcf
     description: "Staging view over GCF seed."
+    columns:
+      - name: State
+        description: "State abbreviation."
+      - name: Rating_Area
+        description: "Numeric rating area."
+      - name: GCF
+        description: "Geographic cost factor."
+      - name: Billable_Member_Months
+        description: "Billable member months used in the factor derivation."
+      - name: Year
+        description: "Calendar/model year."
+      - name: Market
+        description: "Market indicator."
+      - name: rating_area_text
+        description: "Computed rating area label (e.g., R-<STATE><NNN>)."
