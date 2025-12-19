@@ -1,0 +1,21 @@
+database:
+  # Default values match the container quickstart (localhost:1433, DB=edge, user=sa)
+  driver: "ODBC Driver 18 for SQL Server"
+  server: "localhost,1433"
+  database: "edge"
+  user: "sa"
+  # Prefer keeping secrets out of the repo: set this env var instead of putting a password here.
+  password_env: "MSSQL_SA_PASSWORD"
+  # If you really want, you can inline a password (overrides password_env):
+  # password: "<MSSQL_SA_PASSWORD>"
+
+run_settings:
+  benefit_year: 2025
+  analysis_period:
+    start_date: "2025-01-01"
+    end_date: "2025-12-31"
+    paid_through_date: "2026-04-30"
+  population_filters:
+    state: "NY"
+    market: 1  # 1=Individual, 2=Small Group
+    issuer_hios_id: "99999"
