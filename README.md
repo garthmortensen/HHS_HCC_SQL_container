@@ -4,12 +4,13 @@ Documentation: https://garthmortensen.github.io/HHS_HCC_SQL_container
 
 ## Why Implement This?
 
-For new Risk Adjustment teams, this project offers a **transparent, zero-cost alternative** to expensive vendor "black box" solutions. By running the HHS-HCC model directly in your own SQL environment, you gain:
+This project modernizes the traditional HHS-HCC calculation by wrapping the standard logic in a **software engineering workflow**. Unlike static SAS scripts or ad-hoc SQL procedures, this approach delivers:
 
-*   **Full Visibility**: Audit every step of the calculation, from claim filtering to coefficient application.
-*   **Data Control**: Keep your sensitive member data within your own infrastructure.
-*   **Rapid Iteration**: Test scenarios and forecast scores instantly without waiting for vendor turnaround.
-*   **Foundation for Growth**: Built on standard SQL and dbt, it scales easily from a single analyst to a full data engineering team.
+*   **Reproducibility & Version Control**: Git-backed code means every change to logic or coefficients is tracked, reviewable, and reversible. No more "v2_final_final.sql". And if something breaks, you can always roll back to a known good state.
+*   **Analytical Rigor**: The dbt framework adds testing, lineage, and documentation to your data pipeline, ensuring data quality before it hits the model.
+*   **Advanced Decomposition**: The architecture is designed for "What-If" analysis, allowing you to cleanly separate regulatory model impacts from population health shifts.
+*   **Portable Infrastructure**: The containerized SQL Server setup ensures that your model runs identically on a laptop, a server, or in the cloud, eliminating "it works on my machine" issues.
+*  **Extensibility**: Modular code structure makes it easy to adapt to future HHS model changes or incorporate custom business logic.
 
 ## Quick Start
 
@@ -100,20 +101,20 @@ flowchart TD
     Start([Start]) --> Config[Configuration: Year, State, Market]
     Config --> Enr[Load Enrollment Data]
     Enr --> EnrCalc[Calculate Age & Duration]
-    EnrCalc --> Claims[Filter Acceptable Claims]
-    Claims --> DxMap[Map Diagnoses to HCCs]
+    EnrCalc --> Claims["Filter Acceptable Claims<br/>(dbo.ServiceCodeReference)"]
+    Claims --> DxMap["Map Diagnoses to HCCs<br/>(dbo.dx_mapping_table)"]
     DxMap --> Supp[Apply Supplemental Adds/Deletes]
-    Supp --> RXC[Map RXCs from Pharmacy/Medical]
-    RXC --> Score[Calculate Risk Scores]
-    Score --> CSR[Apply CSR Adjustments]
+    Supp --> RXC["Map RXCs from Pharmacy/Medical<br/>(dbo.NDC_RXC, dbo.hcpcsrxc)"]
+    RXC --> Score["Calculate Risk Scores<br/>(dbo.RiskScoreFactors)"]
+    Score --> CSR["Apply CSR Adjustments<br/>(dbo.CSR_ADJ_FACTORS)"]
     CSR --> Update[Update hcc_list]
     Update --> End([End])
 
     subgraph Inputs
-    E[Enrollment]
-    M[MedicalClaims]
-    P[PharmacyClaims]
-    S[Supplemental]
+    E[dbo.Enrollment]
+    M[dbo.MedicalClaims]
+    P[dbo.PharmacyClaims]
+    S[dbo.Supplemental]
     end
 
     E --> Enr
@@ -171,6 +172,15 @@ erDiagram
     -   Set the benefit year.
     -   Update start date, end date, and paid through dates.
 3.  **Execute**: Run the script. It should take a few minutes.
+
+### Running via `config.yml` (Python)
+
+This repo includes a small runner that reads `config.yml` (including the `database:` section) and executes `DIY-Model-Script/diy_model_script.sql` with those settings.
+
+```bash
+# From repo root
+python scripts/run_parametrized_diy_model.py
+```
 4.  **Build Marts**: Run dbt to generate the final analytic tables.
     ```bash
     dbt run
@@ -179,6 +189,66 @@ erDiagram
     -   `dbo.hcc_list`: Raw output from DIY script.
     -   `mart.fct_hcc_list`: Cleaned fact table.
     -   `mart.agg_member_risk_score`: Aggregated risk scores.
+
+## Advanced Usage: Waterfall Impact Analysis
+
+This project allows you to perform a **"Waterfall" Impact Analysis** by decoupling the *Data Window* from the *Model Year*. This decomposes year-over-year score changes into specific drivers, helping you explain *why* scores moved—was it the government's model changes, or your population's health?
+
+### The Decomposition Steps
+
+1.  **Baseline (Year T-1)**
+    *   **Data**: Year T-1 Claims/Enrollment
+    *   **Model**: Year T-1
+    *   **Result**: Your actual starting risk score.
+
+2.  **Step 1: Regulatory Model Impact**
+    *   **Data**: **Year T-1** Claims/Enrollment
+    *   **Model**: **Year T**
+    *   **Analysis**: Compare to Baseline. The difference is purely due to HHS coefficient updates, logic changes (e.g., interaction terms), and ICD-to-HCC mapping updates.
+
+3.  **Step 2: Population & Coding Shift**
+    *   **Data**: **Year T** Claims/Enrollment
+    *   **Model**: **Year T**
+    *   **Analysis**: Compare to Step 1. The difference is driven by:
+        *   **Demographics**: Aging, new entrants, disenrollment.
+        *   **Plan Mix**: Changes in Metal Levels/CSR affecting induced demand.
+        *   **Acuity/Coding**: Changes in disease prevalence and coding capture.
+
+4.  **Final (Year T)**
+    *   **Result**: Your actual ending risk score.
+
+*Example Narrative: "Our score dropped 2%. The new HHS model caused a 5% drop (Step 1), but our population got 3% sicker (Step 2), netting to -2%."*
+
+### Increasing Granularity
+
+You can further decompose "Population & Coding Shift" (Step 2) by isolating specific variables:
+
+*   **Member Churn**: Separate the impact of members leaving vs. new entrants (Selection Effect).
+*   **Demographic Drift**: Isolate the effect of the population simply aging one year vs. changes in Metal Level mix.
+*   **Clinical Progression**: Distinguish between existing members getting sicker (e.g., Diabetes w/o Complication -> Diabetes w/ Complication) vs. new diagnoses.
+*   **Coding Completeness**: Compare scores at different claim runout periods (3 vs. 6 vs. 9 months) to measure operational lag.
+*   **Provider Attribution**: Decompose score changes by provider group to identify coding initiatives or care pattern shifts.
+*   **Rx vs. Medical**: Analyze the shift in risk capture between Pharmacy (RXC) and Medical (HCC) claims.
+
+## Decomposition goal, orchestration
+
+To perform the decomposition, you need to run the DIY model 4 times with different combinations of population data and model coefficients. Given the minimal decomp requires many runs, a job orchestration tool (dagster or custom implementation?) would save labor and reduce errors.
+
+Run these 4 jobs:
+
+1. S(P0, C0) baseline (old pop, old coeff)
+1. S(P0, C1) coeff-only change 
+1. S(P1, C0) population-only change
+1. S(P1, C1) actual new (new pop, new coeff)
+
+Then decompose:
+
+1. Population effect (holding coefficients fixed): S(P1,C0) - S(P0,C0)
+1. Coefficient effect (holding population fixed): S(P0,C1) - S(P0,C0)
+1. Interaction (optional): S(P1,C1) - S(P1,C0) - (S(P0,C1) - S(P0,C0))
+1. No interaction with symmetric average of the two orderings:
+    1. Pop effect = 0.5 * [(S(P1,C0)-S(P0,C0)) + (S(P1,C1)-S(P0,C1))]
+    1. Coeff effect = 0.5 * [(S(P0,C1)-S(P0,C0)) + (S(P1,C1)-S(P1,C0))]
 
 ## Documentation
 
@@ -216,12 +286,12 @@ flowchart TD
 ```mermaid
 flowchart TD
   A[Start] --> B[bootstrap.sql]
-  B --> C[Create Input Tables<br/>(Structure Only)]
-  C --> D[dbt seed<br/>(Load Reference CSVs)]
-  D --> E[User Loads Data<br/>(Enrollment, Claims)]
+  B --> C["Create Input Tables<br/>(Structure Only)"]
+  C --> D["dbt seed<br/>(Load Reference CSVs)"]
+  D --> E["User Loads Data<br/>(Enrollment, Claims)"]
   E --> F[Run DIY Model Script]
   F --> G[Output: dbo.hcc_list]
-  G --> H[dbt run<br/>(Create Marts)]
+  G --> H["dbt run<br/>(Create Marts)"]
 ```
 
 ### ERD (Conceptual Joins)
