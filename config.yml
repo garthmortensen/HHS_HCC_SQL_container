@@ -19,3 +19,43 @@ run_settings:
     state: "NY"
     market: 1  # 1=Individual, 2=Small Group
     issuer_hios_id: "99999"
+
+# Waterfall/Scenario Definitions
+# define scenarios here for advanced decomposition analysis
+decomposition_scenarios:
+  - id: "baseline_2024"
+    description: "2024 Data with 2024 Model"
+    benefit_year: 2024
+    data_source_suffix: "_2024"
+    
+  - id: "regulatory_impact"
+    description: "2024 Data with 2025 Model"
+    benefit_year: 2025
+    data_source_suffix: "_2024"
+
+  - id: "population_impact"
+    description: "2025 Data with 2024 Model"
+    benefit_year: 2024
+    data_source_suffix: "_2025"
+
+  - id: "final_2025"
+    description: "2025 Data with 2025 Model"
+    benefit_year: 2025
+    data_source_suffix: "_2025"
+
+# Parameterizing input tables these allows the model to run against different 
+# source datasets (e.g., Enrollment_2024_Snapshot vs Enrollment_Current) 
+# without changing the SQL
+data_sources:
+  database: "edge"
+  schema: "dbo"
+  tables:
+    enrollment: "Enrollment_v1"
+    medical_claims: "MedicalClaims_v1"
+    pharmacy_claims: "PharmacyClaims_v1"
+    supplemental: "Supplemental_v1"
+
+outputs:
+  target_table: "hcc_list_run_1"
+  overwrite_existing: true
+  drop_temp_tables: true # Debug flag

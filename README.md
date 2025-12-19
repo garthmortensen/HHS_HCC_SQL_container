@@ -175,11 +175,23 @@ erDiagram
 
 ### Running via `config.yml` (Python)
 
-This repo includes a small runner that reads `config.yml` (including the `database:` section) and executes `DIY-Model-Script/diy_model_script.sql` with those settings.
+This repo includes a small runner that reads `config.yml` and executes `DIY-Model-Script/diy_model_script.sql` with those settings.
 
 ```bash
 # From repo root
-python scripts/run_parametrized_diy_model.py
+export MSSQL_PASSWORD="<MSSQL_SA_PASSWORD>"  # matches containers/mssql/.env
+python scripts/run_diy_model.py --config config.yml
+```
+
+You can also override connection settings:
+
+```bash
+python scripts/run_diy_model.py \
+  --config config.yml \
+  --server localhost,1433 \
+  --database edge \
+  --user sa \
+  --password "<MSSQL_SA_PASSWORD>"
 ```
 4.  **Build Marts**: Run dbt to generate the final analytic tables.
     ```bash

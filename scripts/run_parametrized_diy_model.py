@@ -2,14 +2,19 @@
 """Run the DIY HHS-HCC SQL script using settings from config.yml.
 
 This script:
-- reads database + run_settings from config.yml
+- reads run_settings from a YAML config
 - injects a parameterized DECLARE prelude
 - strips the hard-coded "User Inputs" DECLARE block from DIY-Model-Script/diy_model_script.sql
 - executes the resulting SQL batch against SQL Server via ODBC
 
+Environment variables (defaults match the container quickstart):
+  MSSQL_SERVER   default: localhost,1433
+  MSSQL_DATABASE default: edge
+  MSSQL_USER     default: sa
+  MSSQL_PASSWORD default: $MSSQL_SA_PASSWORD (if set)
+
 Example:
-    # Ensure repo-root .env contains MSSQL_SA_PASSWORD (or set the env var referenced by config.yml)
-    python scripts/run_parametrized_diy_model.py
+  MSSQL_PASSWORD=... python scripts/run_diy_model.py
 """
 
 from __future__ import annotations
@@ -18,7 +23,6 @@ import os
 from pathlib import Path
 
 import yaml
-from dotenv import load_dotenv
 
 SQL_MARKER = "/***** End User Inputs; Do not edit below this line ******/"
 
@@ -136,7 +140,6 @@ DECLARE @drop_existing bit = 0;
 
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
-    load_dotenv(repo_root / ".env")
     config_path = repo_root / "config.yml"
     sql_path = repo_root / "DIY-Model-Script" / "diy_model_script.sql"
 
